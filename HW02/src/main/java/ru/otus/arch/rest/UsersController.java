@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.otus.arch.domain.Status;
-import ru.otus.arch.repostory.PersonRepository;
+import ru.otus.arch.repostory.UsersRepository;
 
 @RestController
-public class PersonController {
+public class UsersController {
 
-    private final PersonRepository repository;
+    private final UsersRepository repository;
 
     @Autowired
-    public PersonController(PersonRepository repository) {
+    public UsersController(UsersRepository repository) {
         this.repository = repository;
     }
 

@@ -15,15 +15,15 @@ import ru.otus.arch.domain.Users;
  * DTO that represents Account
  */
 @SuppressWarnings("all")
-public class PersonDto {
+public class UsersDto {
 
     private int id = -1;
     private String name;
 
-    public PersonDto() {
+    public UsersDto() {
     }
 
-    public PersonDto(int id, String name) {
+    public UsersDto(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -44,7 +44,7 @@ public class PersonDto {
         this.name = name;
     }
 
-    public static PersonDto toDto(Users users) {
-        return new PersonDto(users.getId(), users.getName());
+    public static UsersDto toDto(Users users) {
+        return new UsersDto(users.getId(), users.getFirstName());
     }
 }

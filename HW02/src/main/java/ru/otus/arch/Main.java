@@ -3,12 +3,14 @@ package ru.otus.arch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import ru.otus.arch.domain.Users;
-import ru.otus.arch.repostory.PersonRepository;
+import ru.otus.arch.repostory.UsersRepository;
 
 import javax.annotation.PostConstruct;
 
 @SpringBootApplication
+@EnableMongoRepositories
 public class Main {
 
     public static void main(String[] args) {
@@ -17,7 +19,7 @@ public class Main {
 
     @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
     @Autowired
-    private PersonRepository repository;
+    private UsersRepository repository;
 
     @PostConstruct
     public void init() {
