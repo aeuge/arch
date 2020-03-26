@@ -1,0 +1,28 @@
+version: '3'
+services:
+ mongo:
+  image: aristoveugene/aeuge:arch-02-db
+  container_name: mongodb
+  ports:
+   - 27017
+  volumes:
+   - /data/db:/data/db
+   - /etc/timezone:/etc/timezone
+   - /etc/localtime:/etc/localtime
+  deploy:
+   restart_policy:
+    condition : on-failure
+ app:
+  image: aristoveugene/aeuge:arch-02-app
+  container_name: app
+  depends_on:
+   - mongo
+  ports: 
+   - 80:80
+   - 27017
+  volumes:
+   - /etc/timezone:/etc/timezone
+   - /etc/localtime:/etc/localtime  
+  deploy:
+   restart_policy:
+    condition : on-failure

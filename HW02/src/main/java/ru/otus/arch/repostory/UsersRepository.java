@@ -5,7 +5,8 @@ import ru.otus.arch.domain.Users;
 
 import java.util.List;
 
-public interface UsersRepository extends MongoRepository<Users, Integer> {
+public interface UsersRepository extends MongoRepository<Users, String> {
 
     List<Users> findAll();
+    Users findByObjectId(String objectId);
 }

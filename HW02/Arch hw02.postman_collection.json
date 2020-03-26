@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "fa7d4449-5350-4b5d-9189-db8f781b17d4",
+		"name": "Arch hw02",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw",
+						"type": "text"
+					},
+					{
+						"key": "cache-control",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customerId\":\"1\", \"orderItemSet\" : [{\"price\":77500, \"quantity\":2,\"bookId\":1}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw",
+						"type": "text"
+					},
+					{
+						"key": "cache-control",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"objectId\":\"111\",\"firstName\":null,\"lastName\":null,\"createdAt\":\"2020-03-25T09:04:36.841+0000\",\"login\":\"Lermontov4\",\"email\":null,\"phone\":null}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit-user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw"
+					},
+					{
+						"key": "cache-control",
+						"type": "text",
+						"value": " no-cache"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"objectId\":\"111\",\"firstName\":null,\"lastName\":null,\"createdAt\":\"2020-03-25T09:04:36.841+0000\",\"login\":\"Lermont\",\"email\":null,\"phone\":null}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list 1 User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw",
+						"type": "text"
+					},
+					{
+						"key": "cache-control",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customerId\":\"1\", \"orderItemSet\" : [{\"price\":77500, \"quantity\":2,\"bookId\":1}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/users/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw",
+						"type": "text"
+					},
+					{
+						"key": "cache-control",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customerId\":\"1\", \"orderItemSet\" : [{\"price\":77500, \"quantity\":2,\"bookId\":1}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/users/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "health",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw"
+					},
+					{
+						"key": "cache-control",
+						"type": "text",
+						"value": " no-cache"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customerId\":\"1\", \"orderItemSet\" : [{\"price\":77500, \"quantity\":2,\"bookId\":1}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
