@@ -10,7 +10,7 @@ spec:
   selector:
     app: mongodb
   clusterIP: None
-#-----------------------------------
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -40,3 +40,23 @@ spec:
         - name: mongodbpath
           hostPath:
             path: /data/db
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: aristoveugene/aeuge:arch-02-app
+          ports:
+            - containerPort: 80
