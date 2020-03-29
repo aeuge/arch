@@ -26,6 +26,8 @@ public class UsersController {
     }
     @GetMapping("/api/v1/users")
     public List<Users> getAllUsers() {
+        //List<Users> users = repository.findAll();
+        //users.forEach(System.out::println);
         return repository.findAll();
     }
     @GetMapping("/api/v1/users/{objectId}")

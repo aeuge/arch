@@ -23,6 +23,8 @@ public class Main {
 
     @PostConstruct
     public void init() {
+        Users user = new Users("Pushkin");
+        System.out.println(user.toString());
         repository.save(new Users("Pushkin"));
         repository.save(new Users("Lermontov"));
     }
