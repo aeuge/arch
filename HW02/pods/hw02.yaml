@@ -9,9 +9,10 @@ spec:
     - port: 27017
   selector:
     app: mongodb
+  clusterIP: None
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mongodb
   labels:
@@ -21,6 +22,7 @@ spec:
     matchLabels:
       app: mongodb
   replicas: 1
+  serviceName: "mongodb"
   template:
     metadata:
       labels:
@@ -31,14 +33,29 @@ spec:
           image: aristoveugene/aeuge:arch-02-db
           volumeMounts:
             - mountPath: /data/db
-              name: mongodbpath
+              name: mongodbstorage
+            - mountPath: /etc/timezone
+              name: timezone
+            - mountPath: /etc/localtime
+              name: localtime
           ports:
             - containerPort: 27017  
               name: mongodb
       volumes:
-        - name: mongodbpath
+        - name: timezone
           hostPath:
-            path: /data/db
+            path: /etc/timezone
+        - name: localtime
+          hostPath:
+            path: /etc/localtime
+  volumeClaimTemplates:
+    - metadata:
+        name: mongodbstorage
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
@@ -69,6 +86,11 @@ spec:
       containers:
         - name: app
           image: aristoveugene/aeuge:arch-02-app
+          volumeMounts:
+            - mountPath: /etc/timezone
+              name: timezone
+            - mountPath: /etc/localtime
+              name: localtime
           ports:
             - containerPort: 80
               name: app
@@ -93,6 +115,13 @@ spec:
              configMapKeyRef:
                 name: app-configmap
                 key: server.port
+      volumes:
+        - name: timezone
+          hostPath:
+            path: /etc/timezone
+        - name: localtime
+          hostPath:
+            path: /etc/localtime
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
