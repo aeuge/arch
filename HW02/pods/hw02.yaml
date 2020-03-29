@@ -9,7 +9,6 @@ spec:
     - port: 27017
   selector:
     app: mongodb
-  clusterIP: None
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -41,6 +40,18 @@ spec:
           hostPath:
             path: /data/db
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: app
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -49,7 +60,7 @@ spec:
   selector:
     matchLabels:
       app: app
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -60,3 +71,34 @@ spec:
           image: aristoveugene/aeuge:arch-02-app
           ports:
             - containerPort: 80
+              name: app
+          env:
+          - name: SPRING_DATA_MONGODB_PORT
+            valueFrom:
+             configMapKeyRef:
+                name: app-configmap
+                key: mongodb.port
+          - name: SPRING_DATA_MONGODB_HOST
+            valueFrom:
+             configMapKeyRef:
+                name: app-configmap
+                key: mongodb.host
+          - name: SPRING_DATA_MONGODB_DATABASE
+            valueFrom:
+             configMapKeyRef:
+                name: app-configmap
+                key: mongodb.database
+          - name: SERVER_PORT
+            valueFrom:
+             configMapKeyRef:
+                name: app-configmap
+                key: server.port
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  backend:
+    serviceName: app
+    servicePort: 80
