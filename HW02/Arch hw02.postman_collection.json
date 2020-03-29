@@ -32,7 +32,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"customerId\":\"1\", \"orderItemSet\" : [{\"price\":77500, \"quantity\":2,\"bookId\":1}]}",
+					"raw": "{}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -62,7 +62,8 @@
 					{
 						"key": "authorization",
 						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "cache-control",
@@ -173,7 +174,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"customerId\":\"1\", \"orderItemSet\" : [{\"price\":77500, \"quantity\":2,\"bookId\":1}]}",
+					"raw": "{}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -220,7 +221,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"customerId\":\"1\", \"orderItemSet\" : [{\"price\":77500, \"quantity\":2,\"bookId\":1}]}",
+					"raw": "{}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -270,7 +271,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"customerId\":\"1\", \"orderItemSet\" : [{\"price\":77500, \"quantity\":2,\"bookId\":1}]}",
+					"raw": "{}",
 					"options": {
 						"raw": {
 							"language": "json"
