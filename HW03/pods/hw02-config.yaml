@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  mongodb.host: mongodb
+  mongodb.port: "27017"
+  mongodb.database: arch
+  application.name: Architector by AEuegene
+  server.port: "80"
