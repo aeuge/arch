@@ -6,7 +6,8 @@ metadata:
     app: mongodb
 spec:
   ports:
-    - port: 27017
+    - name: mongodb
+      port: 27017
   selector:
     app: mongodb
   clusterIP: None
@@ -39,8 +40,9 @@ spec:
             - mountPath: /etc/localtime
               name: localtime
           ports:
-            - containerPort: 27017  
-              name: mongodb
+            - name: mongodb
+              containerPort: 27017  
+              
       volumes:
         - name: timezone
           hostPath:
@@ -65,7 +67,8 @@ metadata:
     app: app
 spec:
   ports:
-    - port: 80
+    - name: app
+      port: 80
   selector:
     app: app
 ---
@@ -85,15 +88,15 @@ spec:
     spec:
       containers:
         - name: app
-          image: aristoveugene/aeuge:arch-02-app
+          image: aristoveugene/aeuge:arch-03-app
           volumeMounts:
             - mountPath: /etc/timezone
               name: timezone
             - mountPath: /etc/localtime
               name: localtime
           ports:
-            - containerPort: 80
-              name: app
+            - name: app
+              containerPort: 80
           env:
           - name: SPRING_DATA_MONGODB_PORT
             valueFrom:

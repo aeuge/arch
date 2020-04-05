@@ -25,3 +25,5 @@ hs_err_pid*
 *.iml
 *.0.jar.original
 /HW02/target/
+/HW03/.idea/
+/HW03/target/

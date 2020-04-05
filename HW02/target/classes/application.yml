@@ -9,3 +9,14 @@ spring:
       name: Architector by AEuegene
 server:
   port: 80
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus, info
+      base-path: /monitor
+  endpoint:
+    prometheus:
+      enabled: true
+    info:
+      enabled: true
