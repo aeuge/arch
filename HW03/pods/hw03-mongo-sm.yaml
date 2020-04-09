@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-exporter
+  labels:
+    app: mongodb-exporter
+spec:
+  selector:
+    app: mongodb
+  ports:
+    - name: mongodb-exp
+      port: 9216
+      targetPort: 9216
+      protocol: TCP
+  clusterIP: None
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: mongodb-exporter
+  labels:
+    app: mongodb-exporter
+spec:
+  selector:
+    matchLabels:
+      app: mongodb-exporter
+  endpoints:
+  - port: mongodb-exp
+    interval: 5s

@@ -1,0 +1,14 @@
+core:
+  lock_dir: .
+phantom:
+  enabled: true
+  package: yandextank.plugins.Phantom
+  address: foo.bar.com:80
+  ssl: false
+  load_profile:
+    load_type: rps
+    schedule: step(100,1000,100,30s)
+  ammofile: /var/loadtest/ammo_local.txt
+  ammo_type: uri
+telegraf:
+  enabled: false

@@ -42,7 +42,11 @@ spec:
           ports:
             - name: mongodb
               containerPort: 27017  
-              
+        - name: mongodb-exporter
+          image: bitnami/mongodb-exporter:latest
+          ports:
+            - name: mongodb-exp
+              containerPort: 9216  
       volumes:
         - name: timezone
           hostPath:
@@ -125,12 +129,3 @@ spec:
         - name: localtime
           hostPath:
             path: /etc/localtime
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: ingress
-spec:
-  backend:
-    serviceName: app
-    servicePort: 80

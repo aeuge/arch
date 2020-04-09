@@ -1,0 +1,4 @@
+[Connection: close]
+[Host: foo.bar.com]
+[Cookie: None]
+/api/v1/users

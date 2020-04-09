@@ -10,4 +10,5 @@ spec:
       app: app
   endpoints:
   - port: app
+    path: /monitor/prometheus
     interval: 5s
