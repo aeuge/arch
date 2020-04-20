@@ -50,4 +50,9 @@ public class UsersController {
     public void removeUsers(@PathVariable String objectId) {
         repository.deleteById(objectId);
     }
+    @PostMapping("/login")
+    public Users addUsersLogin(@RequestBody Users user) {
+        return repository.save(user);
+    }
+
 }

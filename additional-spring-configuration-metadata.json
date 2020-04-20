@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "jwt.tokenttl",
+      "type": "java.lang.String",
+      "description": "Description for jwt.tokenttl."
+    },
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "Description for jwt.secret."
+    }
+  ] }

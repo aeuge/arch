@@ -21,5 +21,5 @@ management:
     info:
       enabled: true
 jwt:
-  secret: javainuse
-  tokenttl: 500
+  secret: GLSpLFMvoisd
+  tokenttl: 100
