@@ -24,32 +24,39 @@ public class UsersController {
         status.setStatus("ok");
         return status;
     }
+
     @GetMapping("/api/v1/users")
     public List<Users> getAllUsers() {
         //List<Users> users = repository.findAll();
         //users.forEach(System.out::println);
         return repository.findAll();
     }
+
     @GetMapping("/api/v1/users/{objectId}")
     public Users getUser(@PathVariable String objectId) {
         return repository.findByObjectId(objectId);
     }
+
     @PostMapping("/api/v1/users")
     public Users addUsers(@RequestBody Users user) {
         return repository.save(user);
     }
+
     @PutMapping("/api/v1/users")
     public Users updateUsers(@RequestBody Users user) {
         return repository.save(user);
     }
+
     @PutMapping("/api/v1/users/{objectId}")
     public Users addUsersByObject(@PathVariable String objectId, @RequestBody Users user) {
         return repository.save(user);
     }
+
     @DeleteMapping("/api/v1/users/{objectId}")
     public void removeUsers(@PathVariable String objectId) {
         repository.deleteById(objectId);
     }
+
     @PostMapping("/login")
     public Users addUsersLogin(@RequestBody Users user) {
         return repository.save(user);

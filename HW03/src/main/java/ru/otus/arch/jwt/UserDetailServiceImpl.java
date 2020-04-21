@@ -26,7 +26,10 @@ public class UserDetailServiceImpl implements UserDetailService {
             }
         });
         Users user = usersRepository.findByFirstName(name);
-        UserDetails userDetails = new User(user.getFirstName(),user.getFirstName(),true,true,true,true,ga);
+        UserDetails userDetails = null;
+        if (user != null) {
+            userDetails = new User(user.getFirstName(), user.getFirstName(), true, true, true, true, ga);
+        }
         return userDetails;
     }
 }

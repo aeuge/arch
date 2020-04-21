@@ -32,6 +32,7 @@ public class JwtAuthenticationController {
         //authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         final UserDetails userDetails = jwtUserDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
+        if (userDetails == null) throw new Exception("INVALID_CREDENTIALS");
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
     }

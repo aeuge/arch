@@ -5,6 +5,9 @@ spring:
       host: localhost
       port: 27017
       database: arch
+      username: mongo
+      password : mongo
+      authentication-database: admin
     application:
       name: Architector by AEuegene
 server:
