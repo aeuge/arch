@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hello-chart.fullname" . }}
+  name: {{ include "helm3-chart.fullname" . }}
   labels:
-    {{- include "hello-chart.labels" . | nindent 4 }}
+    {{- include "helm3-chart.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "hello-chart.selectorLabels" . | nindent 6 }}
+      {{- include "helm3-chart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "hello-chart.selectorLabels" . | nindent 8 }}
+        {{- include "helm3-chart.selectorLabels" . | nindent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ include "hello-chart.serviceAccountName" . }}
+      serviceAccountName: {{ include "helm3-chart.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -45,27 +45,37 @@ spec:
           - name: SPRING_DATA_MONGODB_PORT
             valueFrom:
              configMapKeyRef:
-                name: app-configmap
+                name: {{ include "helm3-chart.fullname" . }}
                 key: mongodb.port
           - name: SPRING_DATA_MONGODB_HOST
             valueFrom:
-             configMapKeyRef:
-                name: app-configmap
+              configMapKeyRef:
+                name: {{ include "helm3-chart.fullname" . }}
                 key: mongodb.host
           - name: SPRING_DATA_MONGODB_DATABASE
             valueFrom:
-             configMapKeyRef:
-                name: app-configmap
+              configMapKeyRef:
+                name: {{ include "helm3-chart.fullname" . }}
                 key: mongodb.database
           - name: SPRING_DATA_MONGODB_AUTHENTICATION-DATABASE
             valueFrom:
-             configMapKeyRef:
-                name: app-configmap
+              configMapKeyRef:
+                name: {{ include "helm3-chart.fullname" . }}
                 key: mongodb.authentication-database
+          - name: SPRING_DATA_MONGODB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "helm3-chart.fullname" . }}-secrets
+                key: mongodb.username
+          - name: SPRING_DATA_MONGODB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "helm3-chart.fullname" . }}-secrets
+                key: mongodb.password
           - name: SERVER_PORT
             valueFrom:
-             configMapKeyRef:
-                name: app-configmap
+              configMapKeyRef:
+                name: {{ include "helm3-chart.fullname" . }}
                 key: server.port
       {{- with .Values.nodeSelector }}
       nodeSelector:

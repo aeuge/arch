@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "fa7d4449-5350-4b5d-9189-db8f781b17d4",
+		"name": "Arch hw02",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create-user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "cache-control",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"objectId\":\"111\",\"firstName\":\"Ivanov\",\"lastName\":null,\"createdAt\":\"2020-03-25T09:04:36.841+0000\",\"login\":\"Lermontov4\",\"email\":null,\"phone\":null}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}login",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw",
+						"disabled": true
+					},
+					{
+						"key": "cache-control",
+						"type": "text",
+						"value": " no-cache"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"objectId\":\"111\",\"username\":\"Ivanov\",\"password\":\"Ivanov\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}authenticate",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					},
+					{
+						"key": "cache-control",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}api/v1/users",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit-user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "cache-control",
+						"type": "text",
+						"value": " no-cache"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"objectId\":\"111\",\"firstName\":\"Ivanov\",\"lastName\":\"Ivanov\",\"createdAt\":\"2020-03-25T09:04:36.841+0000\",\"login\":\"Lermont34\",\"email\":null,\"phone\":null}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}api/v1/users",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list 1 User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					},
+					{
+						"key": "cache-control",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}api/v1/users/111",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					},
+					{
+						"key": "cache-control",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}api/v1/users/111",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "health",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": " Basic SkFkYW1zQGdtYWlsLmNvbTpw"
+					},
+					{
+						"key": "cache-control",
+						"type": "text",
+						"value": " no-cache"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}health",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}health"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ff4cecd9-f166-48d1-891c-c3c2d9f6d7d2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "7386c95c-7ec0-4720-9e05-9b73f688a32d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8da1d25f-a232-4ac4-9204-ea97384831d0",
+			"key": "base_url",
+			"value": "localhost/",
+			"type": "string"
+		},
+		{
+			"id": "08d56d4c-02cf-4e35-b99f-c30df0830c65",
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "013e6888-fdf8-4ebb-82fa-39352cc2348d",
+			"key": "base_url2",
+			"value": "arch.homework/otusapp/",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

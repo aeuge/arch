@@ -1,0 +1,11 @@
+minikube start --vm-driver hyperv --hyperv-virtual-switch "PVS"
+cd /mnt/c/download/homework/
+kubectl create namespace monitoring
+helm install ingress bitnami/nginx-ingress-controller --namespace monitoring -f nginx-ingress-bitnami.yaml
+helm install prom bitnami/prometheus-operator --namespace monitoring -f prometheus.yaml
+helm install graf bitnami/grafana --namespace monitoring
+
+kubectl run -i --tty busybox --image=busybox --restart=Never -- sh
+echo -n 'word' | base64
+
+echo "Password: $(kubectl get secret graf-grafana-admin --namespace monitoring -o jsonpath="{.data.GF_SECURITY_ADMIN_PASSWORD}" | base64 --decode)"
