@@ -1,11 +1,21 @@
 minikube start --vm-driver hyperv --hyperv-virtual-switch "PVS"
+cd /mnt/c/Otus/arch/hw03
 cd /mnt/c/download/homework/
 kubectl create namespace monitoring
-helm install ingress bitnami/nginx-ingress-controller --namespace monitoring -f nginx-ingress-bitnami.yaml
-helm install prom bitnami/prometheus-operator --namespace monitoring -f prometheus.yaml
-helm install graf bitnami/grafana --namespace monitoring
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx/
+helm install nginx stable/nginx-ingress --namespace monitoring -f nginx-ingress.yaml
+helm install prom stable/prometheus-operator --namespace monitoring -f prometheus.yaml
 
 kubectl run -i --tty busybox --image=busybox --restart=Never -- sh
 echo -n 'word' | base64
 
+
+--bitnami
+helm install ingress bitnami/nginx-ingress-controller --namespace monitoring -f nginx-ingress-bitnami.yaml
+helm install prom bitnami/prometheus-operator --namespace monitoring -f prometheus.yaml
+helm install graf bitnami/grafana --namespace monitoring
 echo "Password: $(kubectl get secret graf-grafana-admin --namespace monitoring -o jsonpath="{.data.GF_SECURITY_ADMIN_PASSWORD}" | base64 --decode)"
+
+--
+helm install ingress ingress-nginx/ingress-nginx --namespace monitoring -f nginx-ingress.yaml
